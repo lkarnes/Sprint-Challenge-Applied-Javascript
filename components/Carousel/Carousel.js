@@ -6,7 +6,53 @@
     5. Think of how you would animate this component. Make the cards slide in and out, or fade. It's up to you!
     6. Have fun!
 */
+const imageArray = ['./assets/carousel/mountains.jpeg', './assets/carousel/computer.jpeg', './assets/carousel/trees.jpeg',  './assets/carousel/turntable.jpeg']
 
+function carousel(images){
+const crsl = document.createElement('div');
+crsl.classList.add('carousel');
+const box = document.querySelector('.carousel-container');
+box.appendChild(crsl);
+const left = document.createElement('div');
+var counter = 0;
+left.classList.add('left-button');
+left.textContent = '<';
+const img = document.createElement('img');
+img.src = images[0];
+img.style.display = 'block';
+const right = document.createElement('div');
+right.classList.add('right-button');
+right.textContent = '>';
+crsl.appendChild(left);
+crsl.appendChild(img);
+crsl.appendChild(right);
+let image = 0;
+console.log(crsl)
+left.addEventListener('click',()=>{
+ image -= 1;
+if(image < 0){
+  image += images.length
+  return img.src = images[image];
+  
+}else{
+  
+  img.src = images[image];
+}
+console.log(image)
+})
+right.addEventListener('click',()=>{
+  image += 1;
+ if(image > images.length-1){
+    image -= images.length
+    return img.src = images[image];
+ }else{
+   console.log(image)
+   img.src = images[image];
+ }
+ })
+return crsl;
+}
+carousel(imageArray);
 /* HTML:
   <div class="carousel">
     <div class="left-button"> < </div>

@@ -17,3 +17,53 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+function cards(obj){
+    const card = document.createElement('div');
+    card.classList.add('card');
+    const head = document.createElement('div');
+    head.classList.add('headline');
+    head.textContent = obj.headline;
+    const author = document.createElement('div');
+    author.classList.add('author');
+    const imgBox = document.createElement('div');
+    imgBox.classList.add('img-container');
+    author.appendChild(imgBox);
+    const img = document.createElement('img');
+    img.src = obj.authorPhoto;
+    imgBox.appendChild(img);
+    const name = document.createElement('span');
+    name.textContent = `By ${obj.authorName}`
+    author.appendChild(name);
+    card.appendChild(head);
+    card.appendChild(author);
+    const container = document.querySelector('.cards-container');
+    container.appendChild(card)
+    return card;
+}
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(data=>{
+    console.log(data.data.articles)
+    return data.data.articles;
+})
+.then(attr=>{
+    const js = attr.javascript;
+    const bs = attr.bootstrap;
+    const tech = attr.technology;
+    const jq = attr.jquery;
+    const node  = attr.node;
+    node.forEach(art=>{
+        return cards(art);
+    });
+    jq.forEach(art=>{
+        return cards(art);
+    });
+    tech.forEach(art=>{
+        return cards(art);
+    });
+    js.forEach(art=>{
+        return cards(art);
+    });
+    bs.forEach(art=>{
+        return cards(art);
+    });
+    })
