@@ -51,7 +51,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     const tech = attr.technology;
     const jq = attr.jquery;
     const node  = attr.node;
-    console.log(all)
     node.forEach(art=>{
         return cards(art);
     });
