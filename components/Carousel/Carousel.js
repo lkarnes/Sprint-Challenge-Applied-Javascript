@@ -29,22 +29,22 @@ crsl.appendChild(right);
 let image = 0;
 console.log(crsl)
 left.addEventListener('click',()=>{
- 
  image -= 1;
-
 if(image < 0){
-  return image += 5
+  image += images.length
+  return img.src = images[image];
+  
 }else{
-  console.log(image)
+  
   img.src = images[image];
 }
+console.log(image)
 })
 right.addEventListener('click',()=>{
- 
   image += 1;
- 
- if(image > 3){
-   return image -= 5
+ if(image > images.length-1){
+    image -= images.length
+    return img.src = images[image];
  }else{
    console.log(image)
    img.src = images[image];
